@@ -1,0 +1,17 @@
+<h1>Rooms.</h1>
+
+<ul>
+<% @rooms.each do |room| %>
+  <li>
+    <ul>
+      <li><%= link_to room.name, room_path(room) %></li>
+      <li><%= room.address %></li>
+      <li><%= room.price %></li>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "All rooms", rooms_path %>
+
+<%= link_to "Add a New Room for Rent", new_room_path %>

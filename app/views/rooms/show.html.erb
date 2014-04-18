@@ -1,0 +1,19 @@
+<h1>Rooms#show</h1>
+
+<div class="row">
+
+  <h2><%= @room.name %></h2>
+  <h4><%= @room.address %></h4>
+  <h4><%= @room.price %></h4>
+
+  <div class="col-md-3 pull-right">
+
+    <% if current_user == @room.user %>
+      <%= link_to "Add Pictures", new_room_picture_path(@room) %>
+    <% elsif current_user && current_user != @room.user %>
+      <%= render 'reservations/form' %>
+    <% end %>
+
+  </div>
+
+</div>
