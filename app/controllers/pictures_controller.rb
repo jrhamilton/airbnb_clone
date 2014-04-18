@@ -7,6 +7,17 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def create
+    @picture = Picture.new(picture_params)
+    if @picture.save!
+      flash[:notice] = "Your photo was added"
+      redirect_to room_path(@picture.room)
+    else
+      flash[:alert] = "Try again"
+      redirect_to :back
+    end
+  end
+
   def edit
   end
 
@@ -19,6 +30,10 @@ class PicturesController < ApplicationController
   def destroy
   end
 
-  def create
+private
+  def picture_params
+    params.require(:picture).permit(:room_id, :caption, :pic_file_name, :pic_content_type, :pic_file_size, :pic_updated_at)
   end
+
+
 end

@@ -6,7 +6,15 @@
   <h4><%= @room.address %></h4>
   <h4><%= @room.price %></h4>
 
+  <ul>
+    <% @room.pictures.each do |picture| %>
+      <li><%= image_tag @picture.pic.url(:original), :class=> "huge" %></li>
+    <% end %>
+  </ul>
+
   <div class="col-md-3 pull-right">
+
+
 
     <% if current_user == @room.user %>
       <%= link_to "Add Pictures", new_room_picture_path(@room) %>
